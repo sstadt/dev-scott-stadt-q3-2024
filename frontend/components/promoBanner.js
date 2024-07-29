@@ -1,6 +1,7 @@
 import cookie from 'cookie';
 
 const searchParams = new URLSearchParams(window.location.search);
+const medium = searchParams.get('utm_medium');
 const cookies = cookie.parse(document.cookie);
 
 const HIDDEN_BANNERS_KEY = 'tbg_hidden_promo_banners';
@@ -9,14 +10,23 @@ const HIDDEN_BANNERS_KEY = 'tbg_hidden_promo_banners';
  * Initialize component
  */
 const init = () => {
-  const medium = searchParams.get('utm_medium');
+  const query = [];
 
   if (medium) {
-    showBanner(document.querySelector(`[data-promo-banner-utm-medium="${medium}"]`));
-  } else if (cookies.discount_code) {
-    showBanner(document.querySelector(`[data-promo-banner-code="${cookies.discount_code}"]`));
+    query.push(`[data-promo-banner-utm-medium="${medium}"]`);
   }
 
+  if (cookies.discount_code) {
+    query.push(`[data-promo-banner-code="${cookies.discount_code}"]`);
+  }
+
+  // only render the first matched promo message
+  // since the list is rendered in reverse, this only shows the "most recently added"
+  if (query.length > 0) {
+    showBanner(document.querySelector(query.join(', ')));
+  }
+
+  // set up close buttons
   document.querySelectorAll('[data-close-promo-banner]')
     .forEach($banner => $banner.addEventListener('click', closeBanner));
 };

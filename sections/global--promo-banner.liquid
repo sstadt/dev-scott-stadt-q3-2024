@@ -1,5 +1,5 @@
 
-{%- for promo in section.blocks -%}
+{%- for promo in section.blocks reversed -%}
   <div
     class="promo-banner tw-w-full"
     style="background-color: {{ promo.settings.bg_color }}; color: {{ promo.settings.text_color }}; display: none;"
