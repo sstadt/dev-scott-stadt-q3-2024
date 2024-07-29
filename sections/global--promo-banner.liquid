@@ -1,9 +1,15 @@
 
 {%- for promo in section.blocks -%}
-  <div class="promo-banner w-full" style="background-color: {{ promo.settings.bg_color }}; color: {{ promo.settings.text_color }};">
-    <div class="container flex justify-between space-x-4">
-      <p class="flex-grow py-4">{{ promo.message }}</p>
-      <button class="py-4" data-close-promo-banner>close</button>
+  <div
+    class="promo-banner tw-w-full"
+    style="background-color: {{ promo.settings.bg_color }}; color: {{ promo.settings.text_color }}; display: none;"
+    data-promo-banner="{{ promo.id }}"
+    data-promo-banner-utm-medium="{{ promo.settings.utm_medium }}"
+    data-promo-banner-code="{{ promo.settings.discount_code }}"
+  >
+    <div class="tw-container tw-mx-auto tw-flex tw-justify-between tw-space-x-4">
+      <p class="tw-flex-grow tw-py-4">{{ promo.settings.message }}</p>
+      <button class="tw-py-4" data-close-promo-banner="{{ promo.id }}">close</button>
     </div>
   </div>
 {%- endfor -%}
