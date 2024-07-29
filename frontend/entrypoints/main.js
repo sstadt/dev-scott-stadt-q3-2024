@@ -1,2 +1,6 @@
 import 'vite/modulepreload-polyfill'
-import '~/components/promoBanner'
+import promoBanner from '~/components/promoBanner'
+
+document.addEventListener('DOMContentLoaded', () => {
+  promoBanner.init();
+});
