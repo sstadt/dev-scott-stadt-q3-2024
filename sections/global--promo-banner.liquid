@@ -1,0 +1,59 @@
+
+{%- for promo in section.blocks -%}
+  <div class="promo-banner w-full" style="background-color: {{ promo.settings.bg_color }}; color: {{ promo.settings.text_color }};">
+    <div class="container flex justify-between space-x-4">
+      <p class="flex-grow py-4">{{ promo.message }}</p>
+      <button class="py-4" data-close-promo-banner>close</button>
+    </div>
+  </div>
+{%- endfor -%}
+
+{% schema %}
+  {
+    "name": "Promo Banner",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "promo",
+        "name": "Promo",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "text",
+            "id": "message",
+            "label": "Message"
+          },
+          {
+            "type": "text",
+            "id": "utm_medium",
+            "label": "utm_medium"
+          },
+          {
+            "type": "text",
+            "id": "discount_code",
+            "label": "Discount Code"
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background",
+            "default": "#aaa"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text",
+            "default": "#000"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
