@@ -22,10 +22,21 @@
               "bg_color": "#aaa",
               "text_color": "#000"
             }
+          },
+          "promo_mxnfHH": {
+            "type": "promo",
+            "settings": {
+              "message": "Another promo banner WELCOME15",
+              "utm_medium": "bar",
+              "discount_code": "WELCOME15",
+              "bg_color": "#930000",
+              "text_color": "#ffffff"
+            }
           }
         },
         "block_order": [
-          "promo_biMmeR"
+          "promo_biMmeR",
+          "promo_mxnfHH"
         ],
         "settings": {
         }
