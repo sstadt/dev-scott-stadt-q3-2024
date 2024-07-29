@@ -2,6 +2,8 @@
 const searchParams = new URLSearchParams(window.location.search);
 const HIDDEN_BANNERS_KEY = 'tbg_hidden_promo_banners';
 
+console.log(window.location.href);
+
 const init = () => {
   const medium = searchParams.get('utm_medium');
 
